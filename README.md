@@ -1,7 +1,7 @@
 
 # WELCOME!
 </br>
-# Welcome to *Car Price Prediction Project*.
+## Welcome to *Car Price Prediction Project*.
 </br>
 **Team Members:**</br>
 Hoàng Tuấn Anh </br>Nguyễn Văn Vũ </br>Phạm Nguyễn Phú Khánh </br>Nguyễn Minh Hiếu
@@ -14,9 +14,7 @@ Nguyễn Minh Hiếu
 
 <br>
 
-## There are six filters to predict price in the web app
-
-Context:
+## Context:
 Car Price Prediction Challenge A dataset to practice regression by predicting the prices of different cars.
 
 Data mining on a car price prediction dataset involves extracting valuable insights and patterns from the data to build a predictive model for car prices.
