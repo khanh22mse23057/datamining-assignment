@@ -1,6 +1,6 @@
 
 #WELCOME!
-Welcome to "***Car Price Prediction Project***".
+##Welcome to "***Car Price Prediction Project***".
 </br>
 **Team Members:**</br>
 Hoàng Tuấn Anh </br>Nguyễn Văn Vũ </br>Phạm Nguyễn Phú Khánh </br>Nguyễn Minh Hiếu
@@ -35,7 +35,8 @@ Finally, will be compared the performances of algorithms, work more on the algor
 
 <br>
 
-#### <b>Streamlit Web App<b/> --> <a>http://54.209.34.52:8501/<a/>
+#### <b>Streamlit Web App<b/> --> 
+</br><a>https://datamining-assignment-car-price-prediction.streamlit.app<a/>
 ### Installation
 Clone the repository :
 

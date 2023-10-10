@@ -8,10 +8,10 @@ import joblib
 import warnings
 warnings.filterwarnings('ignore')
 from xgboost import XGBRegressor
-import locale
+# import locale
 
 # Load your CSV data (replace 'your_data.csv' with your actual CSV file)
-@st.cache  # Cache the data for improved performance
+@st.cache_data
 def load_data():
     data = pd.read_csv('car_price_cleaned.csv')
     return data
@@ -54,31 +54,27 @@ st.write("\n\n"*2)
 price_model_=joblib.load('carPricePredictorModel.pkl')
 
 with st.sidebar:
-    st.subheader('Car Specs to Predict Price')
+    st.subheader('Specifications for Car')
+    manufacturer = st.sidebar.selectbox("Brand", (manufacturer_data['manufacturer'].unique()))
+    filtered_data = manufacturer_data[manufacturer_data['manufacturer'] == manufacturer]
+    model = st.sidebar.selectbox("Model Selection", (filtered_data['model'].unique()))
+    engine_turbo = st.checkbox('Has Turbo')
+    doors = st.sidebar.selectbox("Door", ("2-3", "4-5", ">5"))
+    wheel = st.sidebar.selectbox("Wheel Type", ("Left", "Right"))
+    levy = st.sidebar.number_input("Levy:", min_value=0, max_value=3000, value=1000, step=100)
+    cylinders = st.sidebar.number_input("Cylinders:", min_value=1, max_value=16, value=4, step=4)
+    fuel_type = st.sidebar.selectbox("Fuel Type", ('Hybrid', 'Petrol', 'Diesel', 'CNG', 'Plug-in Hybrid', 'LPG', 'Hydrogen'))
+    engine_volume = st.sidebar.number_input("Engine Volume:", min_value=0.9, max_value=3.6, value=3.0, step=0.1)
+    engine_volume = float(engine_volume)
+    mileage = st.sidebar.number_input("Mileage/Km:", min_value=0, max_value=36200, value=10000, step=5000)
+    airbags = st.sidebar.number_input("Airbags:", min_value=2, max_value=13, value=4, step=1)
+    gear_box_type = st.sidebar.radio("Gearing Type", ('Automatic', 'Tiptronic', 'Variator', 'Manual'))
+    drive_wheels = st.sidebar.radio("Drive Wheels", ('4x4', 'Front', 'Rear'))
 
-manufacturer = st.sidebar.selectbox("Brand", (manufacturer_data['manufacturer'].unique()))
-
-filtered_data = manufacturer_data[manufacturer_data['manufacturer'] == manufacturer]
-model = st.sidebar.selectbox("Model Selection", (filtered_data['model'].unique()))
-
-engine_turbo = st.checkbox('Has Turbo')
-
-doors = st.sidebar.selectbox("Door", ("2-3", "4-5", ">5"))
-wheel = st.sidebar.selectbox("Wheel Type", ("Left", "Right"))
-levy = st.sidebar.number_input("Levy:", min_value=0, max_value=3000, value=1000, step=100)
-cylinders = st.sidebar.number_input("Cylinders:", min_value=1, max_value=16, value=4, step=4)
-fuel_type = st.sidebar.selectbox("Fuel Type", ('Hybrid', 'Petrol', 'Diesel', 'CNG', 'Plug-in Hybrid', 'LPG', 'Hydrogen'))
-engine_volume = st.sidebar.number_input("Engine Volume:", min_value=0.9, max_value=3.6, value=3.0, step=0.1)
-engine_volume = float(engine_volume)
-mileage = st.sidebar.number_input("Mileage/Km:", min_value=0, max_value=36200, value=10000, step=5000)
-airbags = st.sidebar.number_input("Airbags:", min_value=2, max_value=13, value=4, step=1)
-gear_box_type = st.sidebar.radio("Gearing Type", ('Automatic', 'Tiptronic', 'Variator', 'Manual'))
-drive_wheels = st.sidebar.radio("Drive Wheels", ('4x4', 'Front', 'Rear'))
-
-age = st.sidebar.number_input("Age:", min_value=3, max_value=80, value=5, step=1)
-category = st.sidebar.radio("Car Type", ('Jeep', 'Hatchback', 'Sedan', 'Microbus', 'Goods wagon',
-       'Universal', 'Coupe', 'Minivan', 'Cabriolet', 'Limousine',
-       'Pickup'))
+    age = st.sidebar.number_input("Age:", min_value=3, max_value=80, value=5, step=1)
+    category = st.sidebar.radio("Car Type", ('Jeep', 'Hatchback', 'Sedan', 'Microbus', 'Goods wagon',
+        'Universal', 'Coupe', 'Minivan', 'Cabriolet', 'Limousine',
+        'Pickup'))
 
     
 my_dict = {
@@ -133,14 +129,17 @@ st.write("Selected Specs: \n")
 st.table(df_show)
 
 # Set the locale to your desired currency format
-locale.setlocale(locale.LC_ALL, 'en_US.UTF-8')  # For US currency format
+# try:
+#     locale.setlocale(locale.LC_ALL, 'en_US.UTF-8')
+# except locale.Error:
+#     locale.setlocale(locale.LC_ALL, 'C')  # Fallback to 'C' locale
 
 if st.button("Predict"):
     pred = price_model_.predict(_data)
     col1, col2 = st.columns(2)
     col1.write("The approximate cost of a car is:")
     cost = float(pred[0])
-    formatted_currency = locale.currency(cost, grouping=True)
-    col2.write(formatted_currency)
+    formatted_price = '${:,.2f}'.format(cost)
+    col2.write(formatted_price)
 
 st.write("\n\n")
