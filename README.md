@@ -1,7 +1,7 @@
 
 # WELCOME!
 </br>
-## Welcome to "***Car Price Prediction Project***".
+# Welcome to *Car Price Prediction Project*.
 </br>
 **Team Members:**</br>
 Hoàng Tuấn Anh </br>Nguyễn Văn Vũ </br>Phạm Nguyễn Phú Khánh </br>Nguyễn Minh Hiếu
