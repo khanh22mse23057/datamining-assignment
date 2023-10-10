@@ -24,7 +24,7 @@ https://www.kaggle.com/datasets/deepcontractor/car-price-prediction-challenge
 
 In this Senario, will be estimated the prices of cars using regression algorithms.
 
-Should be imported the necessary modules and load the data given as pkl file. Also will be needed to do a few pre-processing before moving to modelling. Will be implemented ***Linear Regression, Ridge Regression, Lasso Regression,and Elastic-Net algorithms respectively***. Will be added bagging and boosting algorithms such as ***Random Forest and XG Boost*** this notebook to develop the project. It can be measure the success of your models with regression evaluation metrics as well as with cross validation method.
+Should be imported the necessary modules and load the data given as pkl file. Also will be needed to do a few pre-processing before moving to modelling. Will be implemented ***Linear Regression, KNeighborsRegressor, GradientBoostingRegressor, and Elastic-Net algorithms respectively***. Will be added bagging and boosting algorithms such as ***Random Forest and XG Boost*** this notebook to develop the project. It can be measure the success of your models with regression evaluation metrics as well as with cross validation method.
 
 For the better results, you should try to increase the success of your models by performing hyperparameter tuning. Determine feature importances for the model. You can set your model with the most important features for resource saving. You should try to apply this especially in Random Forest and XG Boost algorithms. Unlike the others, you will perform hyperparameter tuning for Random Forest and XG Boost using the ***GridSearchCV*** method.
 
