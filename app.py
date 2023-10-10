@@ -58,7 +58,9 @@ with st.sidebar:
     manufacturer = st.sidebar.selectbox("Brand", (manufacturer_data['manufacturer'].unique()))
     filtered_data = manufacturer_data[manufacturer_data['manufacturer'] == manufacturer]
     model = st.sidebar.selectbox("Model Selection", (filtered_data['model'].unique()))
-    engine_turbo = st.checkbox('Has Turbo')
+    engine_turbo = st.checkbox('Has Turbo ?')
+    leather_interior = st.checkbox('Need Leather interior ?')
+    
     doors = st.sidebar.selectbox("Door", ("2-3", "4-5", ">5"))
     wheel = st.sidebar.selectbox("Wheel Type", ("Left", "Right"))
     levy = st.sidebar.number_input("Levy:", min_value=0, max_value=3000, value=1000, step=100)
@@ -85,9 +87,9 @@ my_dict = {
     'mileage': mileage,
     'cylinders': cylinders,
     'airbags': airbags,
-    'model': 'Corolla',
+    'model': model,
     'category': category,
-    'leather_interior': 'Yes',
+    'leather_interior': ('Yes' if leather_interior else 'No'),
     'fuel_type': fuel_type,
     'gear_box_type': gear_box_type,
     'drive_wheels': drive_wheels,
