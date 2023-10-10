@@ -4,13 +4,11 @@
 ## Welcome to *Car Price Prediction Project*.
 </br>
 **Team Members:**</br>
-Hoàng Tuấn Anh </br>Nguyễn Văn Vũ </br>Phạm Nguyễn Phú Khánh </br>Nguyễn Minh Hiếu
-Welcome to "Car Price Prediction Project".
-Team Members:
-Hoàng Tuấn Anh
-Nguyễn Văn Vũ
-Phạm Nguyễn Phú Khánh
+Hoàng Tuấn Anh </br>
+Nguyễn Văn Vũ </br>
+Phạm Nguyễn Phú Khánh </br>
 Nguyễn Minh Hiếu
+
 
 <br>
 
